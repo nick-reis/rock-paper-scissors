@@ -95,6 +95,7 @@ Computer: ${computerChoice}`);
                 break;
             case "draw":
                 console.log(`Draw! ${capitalize(playerChoice)} is the same as ${capitalize(computerChoice)}`);
+                i -= 1;
                 break;
         }
 
