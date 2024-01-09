@@ -33,41 +33,36 @@ function round(playerChoice, computerChoice) {
 
 
     if (playerChoice === computerChoice) {
+        colorCards(playerChoice, computerChoice, "tie-card");
         draw();
     }
     else if (choices.at(playerIndex - 1) === computerChoice) {
+        colorCards(playerChoice, computerChoice, "player-card");
         win();
     }
     else {
+        colorCards(playerChoice, computerChoice, "computer-card")
         lose();
     }
 
-    colorCards(playerChoice, computerChoice);
     checkGameOver();
 
 
 
 }
 
-function colorCards(playerChoice, computerChoice) {
-    const classes = ["player-card", "computer-card", "tie-card", "hover"];
-    console.log("color");
+function colorCards(playerChoice, computerChoice, colorClass) {
     choices.forEach(element => {
-        element.classList.remove(...classes);
-        if (element === playerChoice) {
-            if (element === computerChoice) {
-                element.classList.add(classes[2]);
-                return;
-            }
-
-            element.classList.add(classes[0]);
-            return;
+        element.classList.remove("player-card", "computer-card", "tie-card", "hover");
+        if(element === playerChoice || element === computerChoice)
+        {
+            element.classList.add(colorClass);
         }
-        else if (element === computerChoice) {
-            element.classList.add(classes[1]);
+        else
+        {
+            element.classList.add("hover");
         }
-
-        element.classList.add("hover");
+        
 
     });
 }
@@ -85,6 +80,8 @@ function setScore(amount)
 }
 
 function win() {
+
+    
     let score = Number(playerScoreText.textContent) + 1;
     playerScoreText.textContent = score;
     gameMessage.textContent = `You win this round!`;
