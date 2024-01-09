@@ -82,8 +82,11 @@ body {
     background-color: rgb(209, 175, 255);
 }
 
-.hover:hover {
+.hover:hover, .card:hover {
     transform: scale(0.96);
+}
+
+.hover:hover {
     background-color: rgb(230, 241, 255);
 }
 
