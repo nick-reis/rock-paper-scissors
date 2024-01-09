@@ -1,0 +1,111 @@
+html{
+    height: 100dvh;
+}
+body
+{
+    display: flex;
+    flex-direction: column;
+    
+    padding: 0px;
+    margin: 0px;
+    height: 100dvh;
+}
+
+.header
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    gap: 15px;
+    padding: 15px;
+}
+
+.main
+{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.score
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.score-number
+{
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 50px;
+    font-weight: 700px;
+    font-family: 'Varela', sans-serif;
+}
+
+.game
+{
+    display: flex;
+    flex: 1;
+    gap: 100px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding: 10px;
+}
+
+.card
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 15px;
+    gap: 10px;
+    border: 5px;
+    border-radius: 12px;
+    border-style: solid;
+    cursor: pointer;
+    transition: all .1s ease-in-out; 
+}
+
+.card:hover
+{
+    transform: scale(0.96); 
+}
+
+.player-card
+{
+    background-color: rgb(195, 221, 255);
+}
+
+.computer-card
+{
+    background-color: rgb(255, 195, 201);
+}
+
+.tie-card
+{
+    background-color: rgb(209, 175, 255)
+}
+
+.option
+{
+    width: 200px;
+    height: 200px;
+}
+
+h3
+{
+    font-size: 24px;
+    font-family: 'Varela', sans-serif;
+}
+
+header
+{
+    font-family: 'Varela', sans-serif;
+    font-size: 38px;
+}

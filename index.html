@@ -5,9 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <script src="resources/js/index.js"></script>
-    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="resources/css/index.css">
 </head>
 <body>
+    <div class="header">
+        <img src="resources/images/rock-paper-scissors.png" width="50" alt="">
+        <header>Rock Paper Scissors</header>
+    </div>
+    <div class="main">
+        <div class="score">
+            <div class="score-number">1</div>
+            <div class="score-number">-</div>
+            <div class="score-number">0</div>
+        </div>
+        <div class="game">
+            <div class="card" id="rock-button">
+                <img class="option" src="resources/images/rock.png" alt="">
+                <h3>Rock</h3>
+            </div>
+            <div class="card" id="paper-button">
+                <img class="option" src="resources/images/paper.png" alt="">
+                <h3>Paper</h3>
+            </div>
+            <div class="card" id="scissors-button">
+                <img class="option" src="resources/images/scissors.png" alt="">
+                <h3>Scissors</h3>
+            </div>
+        </div>
+        <h3 class="message">Game Message</h3>
+        
+    </div>
+
+    <div class="header">
+        <footer>Made by Nicolas Reiser</footer>
+    </div>
+    
     
 </body>
 </html>

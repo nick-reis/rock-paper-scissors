@@ -73,33 +73,31 @@ function game()
 {
     let playerScore = 0;
     let computerScore = 0;
-    for (let i = 0; i < 5; i++)
-    {
-        let playerChoice = prompt("Rock, Paper, or Scissors?");
-        let computerChoice = getComputerChoice();
 
-        console.log(`Player: ${playerChoice} 
+    let playerChoice = prompt("Rock, Paper, or Scissors?");
+    let computerChoice = getComputerChoice();
+
+    console.log(`Player: ${playerChoice} 
 Computer: ${computerChoice}`);
 
-        const result = round(playerChoice, computerChoice);
-        
-        switch(result)
-        {
-            case "win":
-                console.log(`You Win! ${capitalize(playerChoice)} beats ${capitalize(computerChoice)}`);
-                playerScore++;
-                break;
-            case "loose":
-                console.log(`You Loose! ${capitalize(computerChoice)} beats ${capitalize(playerChoice)}`);
-                computerScore++;
-                break;
-            case "draw":
-                console.log(`Draw! ${capitalize(playerChoice)} is the same as ${capitalize(computerChoice)}`);
-                i -= 1;
-                break;
+    const result = round(playerChoice, computerChoice);
+    
+    switch(result)
+    {
+        case "win":
+            console.log(`You Win! ${capitalize(playerChoice)} beats ${capitalize(computerChoice)}`);
+            playerScore++;
+            break;
+        case "loose":
+            console.log(`You Loose! ${capitalize(computerChoice)} beats ${capitalize(playerChoice)}`);
+            computerScore++;
+            break;
+        case "draw":
+            console.log(`Draw! ${capitalize(playerChoice)} is the same as ${capitalize(computerChoice)}`);
+            i -= 1;
+            break;
         }
 
-    }
 
     if (playerScore > computerScore)
     {
@@ -112,7 +110,6 @@ Computer: ${computerChoice}`);
     
 }
 
-game();
 
 
 
