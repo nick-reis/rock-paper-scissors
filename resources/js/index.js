@@ -1,113 +1,120 @@
-const choices = ["rock", "paper", "scissors"];
 
-function getComputerChoice()
-{
+
+
+
+const rockButton = document.getElementById("rock-button");
+const paperButton = document.getElementById("paper-button");
+const scissorsButton = document.getElementById("scissors-button");
+
+const playerScoreText = document.getElementById("player-score");
+const computerScoreText = document.getElementById("computer-score");
+
+const gameMessage = document.querySelector('.message')
+
+
+const choices = [rockButton, paperButton, scissorsButton];
+
+
+choices.forEach(element => {
+    element.addEventListener("click", () => {
+        round(element, getComputerChoice());
+    });
+});
+
+
+function getComputerChoice() {
     let index = Math.floor(Math.random() * choices.length);
     return choices[index];
 }
 
-function round(playerChoice, computerChoice)
-{
-    player = playerChoice.toLowerCase();
+function round(playerChoice, computerChoice) {
+    const playerIndex = choices.indexOf(playerChoice);
 
-    switch(player)
-    {
-        //Rock
-        case choices[0]:
-            //If computer chooses Scissors
-            if (computerChoice === choices[2])
-            {
-                return("win");
-            }
-            //If computer chooses Paper
-            else if(computerChoice == choices[1])
-            {
-                return("loose");
-            }
-            
-            return("draw");
-            
 
-        //Paper
-        case choices[1]:
-            //If computer chooses Rock
-            if (computerChoice === choices[0])
-            {
-                return("win");
-            }
-            //If computer chooses Scissors
-            else if(computerChoice == choices[2])
-            {
-                return("loose");
-            }
-            
-            return("draw");
 
-        //Scissors
-        case choices[2]:
-            //If computer chooses Rock
-            if (computerChoice === choices[0])
-            {
-                return("loose");
-            }
-            //If computer chooses Paper
-            else if(computerChoice == choices[1])
-            {
-                return("win");
-            }
-            
-            return("draw");
+    if (playerChoice === computerChoice) {
+        draw();
     }
+    else if (choices.at(playerIndex - 1) === computerChoice) {
+        win();
+    }
+    else {
+        lose();
+    }
+
+    colorCards(playerChoice, computerChoice);
+    checkGameOver();
+
+
 
 }
 
-function capitalize(string)
-{
+function colorCards(playerChoice, computerChoice) {
+    const classes = ["player-card", "computer-card", "tie-card", "hover"];
+    console.log("color");
+    choices.forEach(element => {
+        element.classList.remove(...classes);
+        if (element === playerChoice) {
+            if (element === computerChoice) {
+                element.classList.add(classes[2]);
+                return;
+            }
+
+            element.classList.add(classes[0]);
+            return;
+        }
+        else if (element === computerChoice) {
+            element.classList.add(classes[1]);
+        }
+
+        element.classList.add("hover");
+
+    });
+}
+
+function capitalize(string) {
     firstLetter = string.charAt(0);
     restOfString = string.slice(1);
-    
+
     return firstLetter.toUpperCase() + restOfString.toLowerCase();
 }
 
-function game()
+function setScore(amount)
 {
-    let playerScore = 0;
-    let computerScore = 0;
 
-    let playerChoice = prompt("Rock, Paper, or Scissors?");
-    let computerChoice = getComputerChoice();
+}
 
-    console.log(`Player: ${playerChoice} 
-Computer: ${computerChoice}`);
+function win() {
+    let score = Number(playerScoreText.textContent) + 1;
+    playerScoreText.textContent = score;
+    gameMessage.textContent = `You win this round!`;
+}
 
-    const result = round(playerChoice, computerChoice);
-    
-    switch(result)
+function lose() {
+    let score = Number(computerScoreText.textContent) + 1;
+    computerScoreText.textContent = score;
+    gameMessage.textContent = "The computer wins this round!";
+}
+
+function draw() {
+    console.log(`Draw`);
+    gameMessage.textContent = "Draw!";
+}
+
+function checkGameOver()
+{
+    if (playerScoreText.textContent === "5")
     {
-        case "win":
-            console.log(`You Win! ${capitalize(playerChoice)} beats ${capitalize(computerChoice)}`);
-            playerScore++;
-            break;
-        case "loose":
-            console.log(`You Loose! ${capitalize(computerChoice)} beats ${capitalize(playerChoice)}`);
-            computerScore++;
-            break;
-        case "draw":
-            console.log(`Draw! ${capitalize(playerChoice)} is the same as ${capitalize(computerChoice)}`);
-            i -= 1;
-            break;
-        }
-
-
-    if (playerScore > computerScore)
-    {
-        console.log("You Win!");
+        gameMessage.textContent = "Congrats! You win the game!";
+        playerScoreText.textContent = 0;
+        computerScoreText.textContent = 0;
     }
-    else
+    else if (computerScoreText.textContent === "5")
     {
-        console.log("You Lose!");
+        gameMessage.textContent = "The computer wins the game! Try Again!";
+        playerScoreText.textContent = 0;
+        computerScoreText.textContent = 0;
     }
-    
 }
 
 
